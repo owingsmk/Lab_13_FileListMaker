@@ -1,7 +1,9 @@
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static java.nio.file.StandardOpenOption.CREATE;
 
 public class FileListMaker {
 
@@ -11,6 +13,7 @@ public class FileListMaker {
         Scanner console = new Scanner(System.in);
         final String menu = "A- add, S - save, O - open, D- delete, C - clear, V-view, Q - Quit";
         boolean done = false; String cmd = "";
+
 
         do { displayList();
             cmd = SafeInput.getRegExString(console, menu, "[AaSsOoDdCcVvQq]");
@@ -54,8 +57,8 @@ public class FileListMaker {
         }
     }
     private static void Save(){
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("List.txt"));
-        out.writeObject();
+        OutputStream out = new BufferedOutputStream(Files.newOutputStream(CREATE));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
     }
     private static void Add() {
         Scanner sc = new Scanner(System.in);
