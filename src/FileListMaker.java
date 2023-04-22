@@ -1,14 +1,12 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
+
 public class FileListMaker {
 
     static ArrayList<String> list = new ArrayList<>(); // @param args the command line arguments */
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
 
         Scanner console = new Scanner(System.in);
         final String menu = "A- add, S - save, O - open, D- delete, C - clear, V-view, Q - Quit";
