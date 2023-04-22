@@ -1,13 +1,19 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 public class FileListMaker {
 
     static ArrayList<String> list = new ArrayList<>(); // @param args the command line arguments */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         Scanner console = new Scanner(System.in);
         final String menu = "A- add, S - save, O - open, D- delete, C - clear, V-view, Q - Quit";
         boolean done = false; String cmd = "";
+
         do { displayList();
             cmd = SafeInput.getRegExString(console, menu, "[AaSsOoDdCcVvQq]");
             cmd = cmd.toUpperCase();
@@ -49,6 +55,10 @@ public class FileListMaker {
             return;
         }
     }
+    private static void Save(){
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("List.txt"));
+        out.writeObject();
+    }
     private static void Add() {
         Scanner sc = new Scanner(System.in);
         String item = SafeInput.getNonZeroLenString(sc, "Enter item to add");
@@ -62,6 +72,9 @@ public class FileListMaker {
         } else
             System.out.println("+++ List is empty +++");
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++");
+    }
+    private static void Open(){
+
     }
     }
 }
